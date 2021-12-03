@@ -50,6 +50,10 @@ export default class DateOptionGenerator {
     return value;
   }
 
+  get selectedValues(): SelectParams {
+    return this.selected;
+  }
+
   get yearOptions(): number[] {
     const startYear = this.rangeStart.getFullYear();
     const endYear = this.rangeEnd.getFullYear();

@@ -6,7 +6,7 @@ export default function Left() {
   return (
     <div>
       히히
-      <DateRoller rangeStart={new Date("1970-05-02")} rangeEnd={startOfToday()} />
+      <DateRoller rangeStart={new Date("1970-05-02")} rangeEnd={startOfToday()} value={new Date()} />
     </div>
   );
 }

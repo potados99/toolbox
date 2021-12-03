@@ -1,25 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DateRoller.css";
 import Roller from "./Roller";
 import DateOptionGenerator, { SelectParams } from "./DateOptionGenerator";
+import useScript from "../../common/useScript";
 
 export type Params = {
   rangeStart: Date;
   rangeEnd: Date;
+  value?: Date;
+  onChange?: (value: Date) => Date;
 };
 
-export default function DateRoller({ rangeStart, rangeEnd }: Params) {
-  const today = new Date();
+export default function DateRoller({ rangeStart, rangeEnd, value, onChange }: Params) {
+  const [generator] = useState(new DateOptionGenerator(rangeStart, rangeEnd, value ?? new Date()));
 
-  const [generator] = useState(new DateOptionGenerator(rangeStart, rangeEnd, today));
+  const { year, month, date } = generator.selectedValues;
 
   const [yearOptions, setYearOptions] = useState(generator.yearOptions);
   const [monthOptions, setMonthOptions] = useState(generator.monthOptions);
   const [dateOptions, setDateOptions] = useState(generator.dateOptions);
 
-  const [selectedYear, setSelectedYear] = useState(today.getFullYear());
-  const [selectedMonth, setSelectedMonth] = useState(today.getMonth() + 1);
-  const [selectedDate, setSelectedDate] = useState(today.getDate());
+  const [selectedYear, setSelectedYear] = useState(year);
+  const [selectedMonth, setSelectedMonth] = useState(month);
+  const [selectedDate, setSelectedDate] = useState(date);
 
   const selectValue = (params: Partial<SelectParams>) => {
     const { year, month, date } = generator.select(params);
@@ -31,6 +34,8 @@ export default function DateRoller({ rangeStart, rangeEnd }: Params) {
     setSelectedYear(year);
     setSelectedMonth(month);
     setSelectedDate(date);
+
+    onChange?.call(null, new Date(year, month - 1, date));
   };
 
   return (
