@@ -6,7 +6,16 @@ export default function Past() {
   const [startDate, setStartDate] = useState(new Date());
   const [includeStartDate, setIncludeStartDate] = useState(true);
 
-  const onChangeIncludeStartDate = (event: ChangeEvent<HTMLInputElement>) => setIncludeStartDate(event.target.checked);
+  const onChangeStartDate = (date: Date) => {
+    setStartDate(date);
+    localStorage.setItem("date", date.toISOString());
+  };
+  const onChangeIncludeStartDate = (event: ChangeEvent<HTMLInputElement>) => {
+    setIncludeStartDate(event.target.checked);
+  };
+
+  const savedDateString = localStorage.getItem("date");
+  const selectedDate = savedDateString ? new Date(savedDateString) : new Date();
 
   const then = startOfDay(startDate);
   const today = startOfToday();
@@ -21,8 +30,8 @@ export default function Past() {
         <DateRoller
           rangeStart={new Date("1970-01-01")}
           rangeEnd={startOfToday()}
-          value={new Date()}
-          onChange={(d) => setStartDate(d)}
+          value={selectedDate}
+          onChange={onChangeStartDate}
         />
 
         <p className="horizontal-space">
