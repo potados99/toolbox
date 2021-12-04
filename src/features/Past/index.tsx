@@ -1,9 +1,12 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { differenceInDays, startOfDay, startOfToday } from "date-fns";
 import DateRoller from "../../components/DateRoller";
 
 export default function Past() {
-  const [startDate, setStartDate] = useState(new Date());
+  const savedDateString = localStorage.getItem("date");
+  const restoredDate = savedDateString ? new Date(savedDateString) : new Date();
+
+  const [startDate, setStartDate] = useState(restoredDate);
   const [includeStartDate, setIncludeStartDate] = useState(true);
 
   const onChangeStartDate = (date: Date) => {
@@ -13,9 +16,6 @@ export default function Past() {
   const onChangeIncludeStartDate = (event: ChangeEvent<HTMLInputElement>) => {
     setIncludeStartDate(event.target.checked);
   };
-
-  const savedDateString = localStorage.getItem("date");
-  const selectedDate = savedDateString ? new Date(savedDateString) : new Date();
 
   const then = startOfDay(startDate);
   const today = startOfToday();
@@ -30,7 +30,7 @@ export default function Past() {
         <DateRoller
           rangeStart={new Date("1970-01-01")}
           rangeEnd={startOfToday()}
-          value={selectedDate}
+          value={startDate}
           onChange={onChangeStartDate}
         />
 
