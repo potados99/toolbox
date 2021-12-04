@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { differenceInDays, format, startOfDay, startOfToday } from "date-fns";
+import { differenceInDays, startOfDay, startOfToday } from "date-fns";
 import DateRoller from "../../components/DateRoller";
 
 export default function Past() {
