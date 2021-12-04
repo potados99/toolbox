@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "날짜계산기",
+  "name": "디데이 계산 / 남은 날짜 계산",
   "icons": [
     {
       "src": "favicon.ico",

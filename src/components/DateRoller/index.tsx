@@ -8,7 +8,7 @@ export type Params = {
   rangeStart: Date;
   rangeEnd: Date;
   value?: Date;
-  onChange?: (value: Date) => Date;
+  onChange?: (value: Date) => void;
 };
 
 export default function DateRoller({ rangeStart, rangeEnd, value, onChange }: Params) {
