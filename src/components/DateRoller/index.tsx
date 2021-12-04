@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./DateRoller.css";
 import Roller from "./Roller";
 import DateOptionGenerator, { SelectParams } from "./DateOptionGenerator";
-import useScript from "../../common/useScript";
 
 export type Params = {
   rangeStart: Date;
