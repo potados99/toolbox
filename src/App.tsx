@@ -1,8 +1,8 @@
-import React from "react";
 import "./App.css";
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import Past from "./features/Past";
-import Left from "./features/Left";
+import React from "react";
+import Future from "./features/Future";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 
 export default function App() {
   return (
@@ -28,7 +28,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Past />} />
-        <Route path="/future" element={<Left />} />
+        <Route path="/future" element={<Future />} />
       </Routes>
     </BrowserRouter>
   );
