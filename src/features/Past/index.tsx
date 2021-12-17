@@ -1,9 +1,9 @@
+import DateRoller from "../../components/DateRoller";
 import React, { ChangeEvent, useState } from "react";
 import { differenceInDays, startOfDay, startOfToday } from "date-fns";
-import DateRoller from "../../components/DateRoller";
 
 export default function Past() {
-  const savedDateString = localStorage.getItem("date");
+  const savedDateString = localStorage.getItem("one-day");
   const restoredDate = savedDateString ? new Date(savedDateString) : new Date();
 
   const [startDate, setStartDate] = useState(restoredDate);
@@ -11,8 +11,9 @@ export default function Past() {
 
   const onChangeStartDate = (date: Date) => {
     setStartDate(date);
-    localStorage.setItem("date", date.toISOString());
+    localStorage.setItem("one-day", date.toISOString());
   };
+
   const onChangeIncludeStartDate = (event: ChangeEvent<HTMLInputElement>) => {
     setIncludeStartDate(event.target.checked);
   };
