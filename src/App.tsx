@@ -2,29 +2,17 @@ import "./App.css";
 import Past from "./features/Past";
 import React from "react";
 import Future from "./features/Future";
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import NavigationBar from "./components/NavigationBar";
+import NavigationLink from "./components/NavigationLink";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <nav className="navigation-bar">
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "navigation-bar-item navigation-bar-item-selected" : "navigation-bar-item"
-          }
-          to="/"
-        >
-          D-day 계산
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "navigation-bar-item navigation-bar-item-selected" : "navigation-bar-item"
-          }
-          to="/future"
-        >
-          남은 날짜 계산
-        </NavLink>
-      </nav>
+      <NavigationBar>
+        <NavigationLink to="/">D-day 계산</NavigationLink>
+        <NavigationLink to="/future">남은 날짜 계산</NavigationLink>
+      </NavigationBar>
 
       <Routes>
         <Route path="/" element={<Past />} />
