@@ -4,7 +4,7 @@ import { NavLink, NavLinkProps } from "react-router-dom";
 
 type Props = NavLinkProps;
 
-export default function NavigationLink({ children, ...rest }: Props) {
+export default function NavSegmentLink({ children, ...rest }: Props) {
   return (
     <NavLink
       {...rest}

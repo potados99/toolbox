@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from "react";
 
 type Props = PropsWithChildren<any>;
 
-export default function NavigationBar({ children }: Props) {
+export default function NavSegment({ children }: Props) {
   return <Nav>{children}</Nav>;
 }
 

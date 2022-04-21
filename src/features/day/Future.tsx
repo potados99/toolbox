@@ -1,8 +1,8 @@
-import DateRoller from "../../../components/DateRoller";
+import DateRoller from "../../components/DateRoller";
 import React, { useState } from "react";
 import { differenceInDays, startOfDay, startOfToday } from "date-fns";
 
-export default function Left() {
+export default function Future() {
   const savedDateString = localStorage.getItem("some-day");
   const restoredDate = savedDateString ? new Date(savedDateString) : new Date();
 

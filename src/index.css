@@ -8,10 +8,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 400px;
-  padding: 10px;
-  margin: 4px auto auto;
   color: #464d52;
+  margin: 0;
 }
 
 code {

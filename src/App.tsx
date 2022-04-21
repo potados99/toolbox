@@ -1,28 +1,41 @@
 import "./App.css";
-import Past from "./features/dday/Past";
+import Past from "./features/day/Past";
 import React from "react";
-import Future from "./features/dday/Future";
-import NavigationBar from "./components/NavigationBar";
-import NavigationLink from "./components/NavigationLink";
-import { useRoutes } from "react-router-dom";
+import Future from "./features/day/Future";
+import Decode from "./features/base64/Decode";
+import Encode from "./features/base64/Encode";
+import { Navigate, useRoutes } from "react-router-dom";
+import Day from "./features/day/Day";
+import Base64 from "./features/base64/Base64";
+import Home from "./features/home/Home";
+import Main from "./features/main/Main";
 
 export default function App() {
-  const navBar = (
-    <NavigationBar>
-      <NavigationLink to="/">D-day 계산</NavigationLink>
-      <NavigationLink to="/future">남은 날짜 계산</NavigationLink>
-    </NavigationBar>
-  );
-
-  const contents = useRoutes([
-    { path: "/", element: <Past /> },
-    { path: "/future", element: <Future /> },
+  return useRoutes([
+    {
+      path: "/",
+      element: <Main />,
+      children: [
+        { path: "", element: <Home /> },
+        {
+          path: "/day",
+          element: <Day />,
+          children: [
+            { path: "", element: <Navigate to={"past"} /> },
+            { path: "past", element: <Past /> },
+            { path: "future", element: <Future /> },
+          ],
+        },
+        {
+          path: "/base64",
+          element: <Base64 />,
+          children: [
+            { path: "", element: <Navigate to={"decode"} /> },
+            { path: "decode", element: <Decode /> },
+            { path: "encode", element: <Encode /> },
+          ],
+        },
+      ],
+    },
   ]);
-
-  return (
-    <>
-      {navBar}
-      {contents}
-    </>
-  );
 }
