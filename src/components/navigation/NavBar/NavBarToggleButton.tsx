@@ -6,7 +6,7 @@ type Props = {
   onClick: MouseEventHandler;
 };
 
-export default function NavbarToggleButton({ crossed, onClick }: Props) {
+export default function NavBarToggleButton({ crossed, onClick }: Props) {
   return (
     <NonStyledButton onClick={onClick}>
       <div>
@@ -39,7 +39,7 @@ const Bread = styled.span<{ crossed: Boolean; angle: number }>`
   margin-top: 6px;
   margin-bottom: 6px;
 
-  transition: transform 0.6s, margin 0.1s;
+  transition: transform 0.4s, margin 0.4s;
 
   ${({ crossed, angle }) =>
     crossed &&

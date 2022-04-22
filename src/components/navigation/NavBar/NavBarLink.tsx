@@ -1,10 +1,9 @@
-import React from "react";
-import { StyleSheet } from "../common/types";
 import { NavLink, NavLinkProps } from "react-router-dom";
+import { StyleSheet } from "../../../common/types";
 
 type Props = NavLinkProps;
 
-export default function NavSegmentLink({ children, ...rest }: Props) {
+export default function NavBarLink({ children, ...rest }: Props) {
   return (
     <NavLink
       {...rest}
@@ -21,12 +20,15 @@ export default function NavSegmentLink({ children, ...rest }: Props) {
 
 const styleVariants = StyleSheet.create({
   default: {
-    flex: 1,
+    width: "100%",
     padding: "16px",
+    textAlign: "center",
+
+    fontSize: "18px",
+    color: "#464d52",
+
     listStyleType: "none",
     textDecoration: "none",
-    textAlign: "center",
-    color: "#464d52",
   },
   active: {
     fontWeight: "bold",

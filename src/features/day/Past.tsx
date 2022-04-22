@@ -1,6 +1,7 @@
-import DateRoller from "../../components/DateRoller";
+import DateRoller from "../../components/widget/DateRoller";
 import React, { ChangeEvent, useState } from "react";
 import { differenceInDays, startOfDay, startOfToday } from "date-fns";
+import styled from "styled-components";
 
 export default function Past() {
   const savedDateString = localStorage.getItem("one-day");
@@ -24,7 +25,7 @@ export default function Past() {
   const howManyDaysPast = differenceInDays(today, then) + compensation;
 
   return (
-    <div>
+    <Container>
       <section className="card">
         <div className="card-text horizontal-space vertical-space">시작일이 언제인가요?</div>
 
@@ -47,6 +48,8 @@ export default function Past() {
         <div className="card-text horizontal-space vertical-space">오늘은</div>
         <h1 className="horizontal-space vertical-space">{howManyDaysPast}일째 날입니다.</h1>
       </section>
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div``;
