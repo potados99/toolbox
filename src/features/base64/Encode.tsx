@@ -1,3 +1,7 @@
 export default function Encode() {
-  return <div>hi</div>;
+  return (
+    <>
+      <h1>⚠️여기도 아직 공사중입니다!</h1>
+    </>
+  );
 }
