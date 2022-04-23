@@ -1,9 +1,9 @@
-import DateRoller from "../../components/widget/DateRoller";
-import React, { useState } from "react";
-import { differenceInDays, startOfDay, startOfToday } from "date-fns";
 import Card from "../../components/card/Card";
 import CardTitle from "../../components/card/CardTitle";
+import DateRoller from "../../components/widget/DateRoller";
 import CardBigText from "../../components/card/CardBigText";
+import React, { useState } from "react";
+import { differenceInDays, startOfDay, startOfToday } from "date-fns";
 
 export default function Future() {
   const savedDateString = localStorage.getItem("some-day");

@@ -1,11 +1,11 @@
-import DateRoller from "../../components/widget/DateRoller";
-import React, { ChangeEvent, useState } from "react";
-import { differenceInDays, startOfDay, startOfToday } from "date-fns";
 import styled from "styled-components";
 import Card from "../../components/card/Card";
 import CardTitle from "../../components/card/CardTitle";
+import DateRoller from "../../components/widget/DateRoller";
 import CardBigText from "../../components/card/CardBigText";
-import { horizontalMargin, primaryTextColor, secondaryTextSize, tertiaryTextColor } from "../../common/styles";
+import React, { ChangeEvent, useState } from "react";
+import { differenceInDays, startOfDay, startOfToday } from "date-fns";
+import { horizontalMargin, secondaryTextSize, tertiaryTextColor } from "../../common/styles";
 
 export default function Past() {
   const savedDateString = localStorage.getItem("one-day");

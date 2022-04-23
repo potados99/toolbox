@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import NavBarLink from "./NavBarLink";
 import { useState } from "react";
-import NavBarToggleButton from "./NavBarToggleButton";
 import { Destinations } from "../../../common/types";
-import { nearWhiteAlphaBackground, titleText, whiteAlphaBackground, whiteBackground } from "../../../common/styles";
+import NavBarToggleButton from "./NavBarToggleButton";
+import { nearWhiteAlphaBackground, titleText, whiteAlphaBackground } from "../../../common/styles";
 
 type Props = {
   title: string;
