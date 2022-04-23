@@ -1,16 +1,16 @@
-import "./DateRoller.css";
+import styled from "styled-components";
 import Roller from "./Roller";
 import React, { useState } from "react";
 import DateOptionGenerator, { SelectParams } from "./DateOptionGenerator";
 
-export type Params = {
+export type Props = {
   rangeStart: Date;
   rangeEnd: Date;
   value?: Date;
   onChange?: (value: Date) => void;
 };
 
-export default function DateRoller({ rangeStart, rangeEnd, value, onChange }: Params) {
+export default function DateRoller({ rangeStart, rangeEnd, value, onChange }: Props) {
   const [generator] = useState(new DateOptionGenerator(rangeStart, rangeEnd, value ?? new Date()));
 
   const { year, month, date } = generator.selectedValues;
@@ -38,10 +38,28 @@ export default function DateRoller({ rangeStart, rangeEnd, value, onChange }: Pa
   };
 
   return (
-    <div className="date-roller-panel-combobox">
+    <ComboBox>
       <Roller options={yearOptions} value={selectedYear} onChange={(year) => selectValue({ year })} />
       <Roller options={monthOptions} value={selectedMonth} onChange={(month) => selectValue({ month })} />
       <Roller options={dateOptions} value={selectedDate} onChange={(date) => selectValue({ date })} />
-    </div>
+    </ComboBox>
   );
 }
+
+const ComboBox = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 450px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(64, 64, 64, 0) 0%,
+    rgba(64, 64, 64, 1) 10%,
+    rgba(64, 64, 64, 1) 90%,
+    rgba(64, 64, 64, 0) 100%
+  );
+`;

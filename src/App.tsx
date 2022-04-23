@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./features/Home";
 import Past from "./features/day/Past";
 import React from "react";

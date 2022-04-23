@@ -3,6 +3,7 @@ import NavSegmentLink from "./NavSegmentLink";
 import { useLocation } from "react-router-dom";
 import { Destinations } from "../../../common/types";
 import React, { useEffect, useState } from "react";
+import { dropShadow, nearGrayBackground, noTouchEffect, smoothBorder } from "../../../common/styles";
 
 type Props = {
   links: Destinations;
@@ -65,11 +66,13 @@ const Nav = styled.nav`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  border-radius: 0.75rem;
-  box-shadow: rgba(0, 0, 0, 0.04) 0 2px 10px 0;
-  background: rgb(229, 229, 234);
 
-  -webkit-tap-highlight-color: transparent;
+  ${smoothBorder}
+
+  ${nearGrayBackground}
+
+  ${dropShadow}
+  ${noTouchEffect}
 `;
 
 const Indicator = styled.div<IndicatorProps>`
@@ -79,13 +82,12 @@ const Indicator = styled.div<IndicatorProps>`
   width: ${({ space, numberOfSegments }) => `calc(100% / ${numberOfSegments} - calc(${space} * 2))`};
 
   background-color: #ffffff;
-  border-radius: 0.65rem;
-  transition: ${({ showAnimation }) => showAnimation && `transform 0.25s`};
+  border-radius: 0.65rem; // smoothBorder에 의존적인 값입니다.
+  transition: ${({ showAnimation }) => showAnimation && `transform 0.2s ease-in-out`};
   backface-visibility: hidden;
 
   transform: ${({ space, selectedSegmentIndex }) =>
-    `translate3d(
-    calc(
-      ${selectedSegmentIndex} * (100% + calc(${space} * 2))
-    ), 0, 0)`};
+    `translate3d(calc(${selectedSegmentIndex} * (100% + calc(${space} * 2))), 0, 0)`};
+
+  ${dropShadow}
 `;

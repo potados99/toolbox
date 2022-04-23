@@ -2,6 +2,10 @@ import DateRoller from "../../components/widget/DateRoller";
 import React, { ChangeEvent, useState } from "react";
 import { differenceInDays, startOfDay, startOfToday } from "date-fns";
 import styled from "styled-components";
+import Card from "../../components/card/Card";
+import CardTitle from "../../components/card/CardTitle";
+import CardBigText from "../../components/card/CardBigText";
+import { horizontalMargin, primaryTextColor, secondaryTextSize, tertiaryTextColor } from "../../common/styles";
 
 export default function Past() {
   const savedDateString = localStorage.getItem("one-day");
@@ -25,31 +29,42 @@ export default function Past() {
   const howManyDaysPast = differenceInDays(today, then) + compensation;
 
   return (
-    <Container>
-      <section className="card">
-        <div className="card-text horizontal-space vertical-space">시작일이 언제인가요?</div>
+    <>
+      <Card>
+        <CardTitle>시작일이 언제인가요?</CardTitle>
 
-        <DateRoller
+        <Roller
           rangeStart={new Date("1970-01-01")}
           rangeEnd={startOfToday()}
           value={startDate}
           onChange={onChangeStartDate}
         />
 
-        <p className="horizontal-space">
+        <CheckBoxSection>
           <input id="includeStartDate" type="checkbox" checked={includeStartDate} onChange={onChangeIncludeStartDate} />
-          <label htmlFor="includeStartDate" className="silent-text">
-            시작일부터 1일로 계산하기
-          </label>
-        </p>
-      </section>
+          <Label htmlFor="includeStartDate">시작일부터 1일로 계산하기</Label>
+        </CheckBoxSection>
+      </Card>
 
-      <section className="card">
-        <div className="card-text horizontal-space vertical-space">오늘은</div>
-        <h1 className="horizontal-space vertical-space">{howManyDaysPast}일째 날입니다.</h1>
-      </section>
-    </Container>
+      <Card>
+        <CardTitle>오늘은</CardTitle>
+        <CardBigText>{howManyDaysPast}일째 날입니다.</CardBigText>
+      </Card>
+    </>
   );
 }
 
-const Container = styled.div``;
+const Roller = styled(DateRoller)`
+  * {
+    ${tertiaryTextColor}
+  }
+`;
+
+const CheckBoxSection = styled.p`
+  ${horizontalMargin}
+`;
+
+const Label = styled.label`
+  ${secondaryTextSize}
+  ${tertiaryTextColor}
+`;

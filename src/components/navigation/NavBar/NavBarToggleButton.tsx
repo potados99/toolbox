@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { noTouchEffect } from "../../../common/styles";
 import React, { MouseEventHandler } from "react";
 
 type Props = {
@@ -29,7 +30,7 @@ const NonStyledButton = styled.button`
   height: 48px;
   width: 48px;
 
-  -webkit-tap-highlight-color: transparent;
+  ${noTouchEffect}
 `;
 
 const Bread = styled.span<{ crossed: Boolean; angle: number }>`

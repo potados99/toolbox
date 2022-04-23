@@ -3,6 +3,7 @@ import NavBarLink from "./NavBarLink";
 import { useState } from "react";
 import NavBarToggleButton from "./NavBarToggleButton";
 import { Destinations } from "../../../common/types";
+import { nearWhiteAlphaBackground, titleText, whiteAlphaBackground, whiteBackground } from "../../../common/styles";
 
 type Props = {
   title: string;
@@ -17,10 +18,10 @@ export default function NavBar({ title, links }: Props) {
 
   return (
     <>
-      <Nav>
+      <Nav opened={opened}>
         <Header>
           <li>
-            <b>{title}</b>
+            <Title>{title}</Title>
           </li>
           <li>
             <NavBarToggleButton crossed={opened} onClick={toggle} />
@@ -38,14 +39,17 @@ export default function NavBar({ title, links }: Props) {
   );
 }
 
-const Nav = styled.nav`
+const Nav = styled.nav<{ opened: Boolean }>`
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 9;
 
-  background: #f7f7f7aa;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(5px);
+
+  transition: all 0.4s;
+
+  ${({ opened }) => (opened ? whiteAlphaBackground : nearWhiteAlphaBackground)}
 `;
 
 const Header = styled.ul`
@@ -60,6 +64,10 @@ const Header = styled.ul`
   list-style: none;
 `;
 
+const Title = styled.text`
+  ${titleText}
+`;
+
 const Links = styled.div<{ opened: Boolean }>`
   display: flex;
   flex-direction: column;
@@ -69,7 +77,7 @@ const Links = styled.div<{ opened: Boolean }>`
   padding: 0;
   margin: 0;
 
-  transition: opacity 0.4s, height 0.4s ease-in-out, visibility 0.4s;
+  transition: opacity 0.4s ease-in-out, height 0.4s ease-in-out, visibility 0.4s;
   opacity: ${({ opened }) => (opened ? "1.0" : "0")};
   height: ${({ opened }) => (opened ? "100vh" : "0")};
   visibility: ${({ opened }) => (opened ? "visible" : "hidden")};

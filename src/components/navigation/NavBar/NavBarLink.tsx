@@ -1,37 +1,26 @@
+import styled from "styled-components";
 import { NavLink, NavLinkProps } from "react-router-dom";
-import { StyleSheet } from "../../../common/types";
+import { boldText, noListStyle, primaryText } from "../../../common/styles";
 
 type Props = NavLinkProps;
 
 export default function NavBarLink({ children, ...rest }: Props) {
   return (
-    <NavLink
-      {...rest}
-      style={({ isActive }) =>
-        isActive
-          ? { ...styleVariants.default, ...styleVariants.active }
-          : { ...styleVariants.default, ...styleVariants.inactive }
-      }
-    >
+    <StyledNavLink {...rest} className={({ isActive }) => (isActive ? "active" : "")}>
       {children}
-    </NavLink>
+    </StyledNavLink>
   );
 }
 
-const styleVariants = StyleSheet.create({
-  default: {
-    width: "100%",
-    padding: "16px",
-    textAlign: "center",
+const StyledNavLink = styled(NavLink)`
+  width: 100%; // 가로폭 전체를 터치 영역에 넣기 위함입니다.
+  padding: 16px;
+  text-align: center;
 
-    fontSize: "18px",
-    color: "#464d52",
-
-    listStyleType: "none",
-    textDecoration: "none",
-  },
-  active: {
-    fontWeight: "bold",
-  },
-  inactive: {},
-});
+  ${primaryText}
+  ${noListStyle}
+  
+  &.active {
+    ${boldText}
+  }
+`;

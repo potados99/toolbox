@@ -1,37 +1,28 @@
 import React from "react";
-import { StyleSheet } from "../../../common/types";
+import styled from "styled-components";
 import { NavLink, NavLinkProps } from "react-router-dom";
+import { boldText, noListStyle, primaryTextColor, tertiaryTextSize } from "../../../common/styles";
 
 type Props = NavLinkProps;
 
 export default function NavSegmentLink({ children, ...rest }: Props) {
   return (
-    <NavLink
-      {...rest}
-      style={({ isActive }) =>
-        isActive
-          ? { ...styleVariants.default, ...styleVariants.active }
-          : { ...styleVariants.default, ...styleVariants.inactive }
-      }
-    >
+    <StyledNavLink {...rest} className={({ isActive }) => (isActive ? "active" : "")}>
       {children}
-    </NavLink>
+    </StyledNavLink>
   );
 }
 
-const styleVariants = StyleSheet.create({
-  default: {
-    flex: 1,
-    padding: "10px",
-    listStyleType: "none",
-    textDecoration: "none",
-    textAlign: "center",
-    color: "#464d52",
-    fontSize: "14px",
-    zIndex: 1,
-  },
-  active: {
-    fontWeight: "bold",
-  },
-  inactive: {},
-});
+const StyledNavLink = styled(NavLink)`
+  z-index: 1;
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+
+  ${tertiaryTextSize}
+  ${primaryTextColor}
+  ${noListStyle}
+  &.active {
+    ${boldText}
+  }
+`;

@@ -1,5 +1,6 @@
-import "./Roller.css";
 import React, { useEffect, useRef } from "react";
+import styled from "styled-components";
+import { primaryTextColor } from "../../../common/styles";
 
 export type Params = {
   options: number[];
@@ -14,16 +15,16 @@ export default function Roller(params: Params) {
 
   const renderItem = (valueHere: number) => {
     return (
-      <li
+      <Item
         key={valueHere}
-        className={valueHere === value ? "date-roller-panel-select-option-selected" : ""}
+        className={valueHere === value ? "selected" : ""}
         onClick={() => {
           onChange(valueHere);
         }}
         ref={valueHere === value ? selected : null}
       >
         {valueHere}
-      </li>
+      </Item>
     );
   };
 
@@ -39,8 +40,43 @@ export default function Roller(params: Params) {
   }, []);
 
   return (
-    <div className="date-roller-panel-select">
-      <ul>{options.map(renderItem)}</ul>
-    </div>
+    <Container>
+      <ItemWrapper>{options.map(renderItem)}</ItemWrapper>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  flex: 1;
+  box-sizing: border-box;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  height: 250px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+
+  &:nth-child(2n) {
+    border-left: 1px solid #e9e9e9;
+    border-right: 1px solid #e9e9e9;
+  }
+`;
+
+const ItemWrapper = styled.ul`
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+`;
+
+const Item = styled.li`
+  font-size: 28px;
+  font-weight: bold;
+
+  ${primaryTextColor}
+
+  &.selected {
+    color: cornflowerblue;
+    background: #edeffe;
+  }
+`;
