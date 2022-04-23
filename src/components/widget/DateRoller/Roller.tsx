@@ -57,9 +57,19 @@ const Container = styled.div`
   padding-top: 80px;
   padding-bottom: 80px;
 
-  &:nth-child(2n) {
+  :nth-child(2n) {
     border-left: 1px solid #e9e9e9;
     border-right: 1px solid #e9e9e9;
+  }
+
+  * {
+    // IE, Edge에서 스크롤바를 제거합니다.
+    -ms-overflow-style: none;
+  }
+
+  ::-webkit-scrollbar {
+    // 크롬에서 스크롤바를 제거합니다.
+    display: none;
   }
 `;
 
