@@ -6,7 +6,9 @@ export class StyleSheet {
   }
 }
 
-export type Destinations = { name: string; path: string }[];
+export type Destination = { name: string; path: string };
+
+export type Destinations = Destination[];
 
 export type Sitemap = TopLevelRoute[];
 

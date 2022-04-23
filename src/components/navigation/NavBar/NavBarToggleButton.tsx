@@ -28,6 +28,8 @@ const NonStyledButton = styled.button`
   border: none;
   height: 48px;
   width: 48px;
+
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const Bread = styled.span<{ crossed: Boolean; angle: number }>`

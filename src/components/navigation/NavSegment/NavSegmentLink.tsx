@@ -22,11 +22,13 @@ export default function NavSegmentLink({ children, ...rest }: Props) {
 const styleVariants = StyleSheet.create({
   default: {
     flex: 1,
-    padding: "16px",
+    padding: "10px",
     listStyleType: "none",
     textDecoration: "none",
     textAlign: "center",
     color: "#464d52",
+    fontSize: "14px",
+    zIndex: 1,
   },
   active: {
     fontWeight: "bold",

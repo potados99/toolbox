@@ -42,9 +42,9 @@ const Nav = styled.nav`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 9;
 
-  background: #ffffffaa;
+  background: #f7f7f7aa;
   backdrop-filter: blur(4px);
 `;
 
