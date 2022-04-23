@@ -20,6 +20,11 @@ export default function Future() {
   const today = startOfToday();
   const howManyDaysLeft = differenceInDays(then, today);
 
+  if (howManyDaysLeft < 0) {
+    // 해당 날짜를 이미 지나친 경우! 오늘로 갑니다.
+    onChangeEndDate(new Date());
+  }
+
   return (
     <>
       <Card>
