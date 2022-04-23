@@ -11,8 +11,8 @@ const StyledSection = styled.section`
   margin-top: 12px;
   background: white;
 
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 
   ${dropShadow}
   ${smoothBorder}
