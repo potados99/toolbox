@@ -65,8 +65,6 @@ export default class DateOptionGenerator {
     return range(1, 12).filter((m) => {
       const date = new Date(this.selected.year, m - 1, 1);
 
-      console.log(date);
-
       return (
         isSameMonth(date, this.rangeStart) ||
         isSameMonth(date, this.rangeEnd) ||
