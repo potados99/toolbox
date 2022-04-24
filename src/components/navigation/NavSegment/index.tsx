@@ -17,31 +17,14 @@ type IndicatorProps = {
 };
 
 export default function NavSegment({ links }: Props) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const [showAnimation, setShowAnimation] = useState(false);
+  const selectedIndex = useSelectedIndex(links);
 
-  const location = useLocation();
-
-  const findAndUpdateCurrentlySelectedIndex = () => {
-    setSelectedIndex(links.findIndex((l) => location.pathname.endsWith(l.path)));
-  };
-
-  useEffect(
-    () => {
-      findAndUpdateCurrentlySelectedIndex();
-
-      /**
-       * 처음 페이지 로드 당시에는 인디케이터가 애니메이션 없이 목적지로 가면 좋겠습니다.
-       * 최초 로드시 렌더링 이후에 setShowAnimation(true) 호출이 실행될 수 있도록,
-       * setTimeout 속에 집어넣었습니다.
-       */
-      setTimeout(() => {
-        setShowAnimation(true);
-      }, 0);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.pathname]
-  );
+  useEffect(() => {
+    setTimeout(() => {
+      setShowAnimation(true);
+    }, 0);
+  }, []);
 
   return (
     <>
@@ -60,6 +43,17 @@ export default function NavSegment({ links }: Props) {
       </Nav>
     </>
   );
+}
+
+function useSelectedIndex(links: Destinations) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    setSelectedIndex(links.findIndex((l) => location.pathname.endsWith(l.path)));
+  }, [links, location.pathname]);
+
+  return selectedIndex;
 }
 
 const Nav = styled.nav`
