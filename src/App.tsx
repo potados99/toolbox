@@ -33,8 +33,8 @@ const sitemap: Sitemap = [
         name: "인코딩 변환",
         path: "encoding",
         children: [
-          { name: "Base64", path: "decode", element: <Base64 /> },
-          { name: "URL 인코딩", path: "encode", element: <Percent /> },
+          { name: "Base64", path: "base64", element: <Base64 /> },
+          { name: "URL 인코딩", path: "percent", element: <Percent /> },
         ],
       },
     ],
