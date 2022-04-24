@@ -87,7 +87,7 @@ export const nearWhiteAlphaBackground = css`
 `;
 
 export const nearGrayBackground = css`
-  background: rgb(223, 223, 228);
+  background: rgb(223, 223, 230);
 `;
 
 export const noListStyle = css`
