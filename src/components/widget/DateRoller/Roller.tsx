@@ -54,8 +54,10 @@ const Container = styled.div`
   overflow-x: hidden;
 
   height: 250px;
-  padding-top: 80px;
-  padding-bottom: 80px;
+
+  // 화면 가운데에 일렬로 배치하기 위해 리스트의 시작과 끝에 padding이 필요합니다.
+  padding-top: 92px;
+  padding-bottom: 92px;
 
   :nth-child(2n) {
     border-left: 1px solid #e9e9e9;
