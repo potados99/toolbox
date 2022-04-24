@@ -42,5 +42,5 @@ const sitemap: Sitemap = [
 ];
 
 export default function App() {
-  return useRoutes(buildRoutes(sitemap));
+  return useRoutes(buildRoutes(sitemap, { segmentTransitionDuration: 0 /* 세그먼트 전환할 때에 페이드 안 할거임 */ }));
 }

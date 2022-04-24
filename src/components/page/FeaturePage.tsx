@@ -1,19 +1,20 @@
-import NavSegment from "../navigation/NavSegment";
+import React from "react";
 import Faded from "./Faded";
 import { Outlet } from "react-router-dom";
-import React from "react";
+import NavSegment from "../navigation/NavSegment";
 import { Destinations } from "../../common/types";
 
 type Props = {
   links: Destinations;
+  fadeDuration?: number;
 };
 
-export default function FeaturePage({ links }: Props) {
+export default function FeaturePage({ links, fadeDuration }: Props) {
   return (
     <>
       <NavSegment links={links} />
 
-      <Faded duration={300}>
+      <Faded duration={fadeDuration ?? 0}>
         <Outlet />
       </Faded>
     </>
