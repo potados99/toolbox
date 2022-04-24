@@ -8,14 +8,40 @@ export const smoothBorder = css`
   border-radius: 0.75rem;
 `;
 
+export const horizontalPadding = css`
+  padding-left: 16px;
+  padding-right: 16px;
+`;
+
+export const topPadding = css`
+  padding-top: 16px;
+`;
+
+export const bottomPadding = css`
+  padding-bottom: 16px;
+`;
+
+export const verticalPadding = css`
+  padding-top: 16px;
+  padding-bottom: 16px;
+`;
+
 export const horizontalMargin = css`
   margin-left: 16px;
   margin-right: 16px;
 `;
 
-export const verticalMargin = css`
+export const topMargin = css`
   margin-top: 16px;
+`;
+
+export const bottomMargin = css`
   margin-bottom: 16px;
+`;
+
+export const verticalMargin = css`
+  ${topMargin}
+  ${bottomMargin}
 `;
 
 export const primaryTextSize = css`
@@ -42,6 +68,10 @@ export const tertiaryTextColor = css`
   color: #748088;
 `;
 
+export const errorTextColor = css`
+  color: rgb(255, 59, 48);
+`;
+
 export const boldText = css`
   font-weight: bold;
 `;
@@ -49,6 +79,7 @@ export const boldText = css`
 export const semiBoldText = css`
   font-weight: 600;
 `;
+
 export const titleText = css`
   ${boldText};
   ${primaryTextSize}
@@ -68,6 +99,11 @@ export const secondaryText = css`
 export const tertiaryText = css`
   ${tertiaryTextSize}
   ${tertiaryTextColor}
+`;
+
+export const errorText = css`
+  ${tertiaryTextSize}
+  ${errorTextColor}
 `;
 
 export const whiteBackground = css`

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { BasicHTMLProps } from "../../common/types";
-import { horizontalMargin, titleText, verticalMargin } from "../../common/styles";
+import { bottomMargin, horizontalMargin, titleText } from "../../common/styles";
 
 export default function CardTitle({ children, ...rest }: BasicHTMLProps) {
   return <Title {...rest}>{children}</Title>;
@@ -10,6 +10,6 @@ export default function CardTitle({ children, ...rest }: BasicHTMLProps) {
 const Title = styled.div`
   ${titleText}
 
-  ${verticalMargin}
   ${horizontalMargin}
+  ${bottomMargin}
 `;

@@ -8,6 +8,8 @@ export class StyleSheet {
 
 export type BasicHTMLProps = React.HTMLAttributes<HTMLElement>;
 
+export type BasicHTMLTextAreaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+
 export type Destination = { name: string; path: string };
 
 export type Destinations = Destination[];

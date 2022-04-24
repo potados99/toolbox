@@ -2,11 +2,11 @@ import Home from "./features/Home";
 import Past from "./features/day/Past";
 import React from "react";
 import Future from "./features/day/Future";
-import Decode from "./features/base64/Decode";
-import Encode from "./features/base64/Encode";
 import { Sitemap } from "./common/types";
 import buildRoutes from "./components/buildRoutes";
 import { useRoutes } from "react-router-dom";
+import Base64 from "./features/encoding/Base64";
+import Percent from "./features/encoding/Percent";
 
 /**
  * 이 앱의 전체 구조도입니다.
@@ -30,11 +30,11 @@ const sitemap: Sitemap = [
         ],
       },
       {
-        name: "Base64 변환",
-        path: "base64",
+        name: "인코딩 변환",
+        path: "encoding",
         children: [
-          { name: "Decode", path: "decode", element: <Decode /> },
-          { name: "Encode", path: "encode", element: <Encode /> },
+          { name: "Base64", path: "decode", element: <Base64 /> },
+          { name: "URL 인코딩", path: "encode", element: <Percent /> },
         ],
       },
     ],
