@@ -47,7 +47,9 @@ export default function NavSegment({ links }: Props) {
     <>
       <Nav>
         {links.map((l) => (
-          <NavSegmentLink to={l.path}>{l.name}</NavSegmentLink>
+          <NavSegmentLink key={l.path} to={l.path}>
+            {l.name}
+          </NavSegmentLink>
         ))}
         <Indicator
           space={"3px"}

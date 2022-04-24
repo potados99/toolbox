@@ -28,9 +28,9 @@ export default function NavBar({ title, links }: Props) {
           </li>
         </Header>
         <Links opened={opened}>
-          {links.map((d) => (
-            <NavBarLink to={d.path} onClick={close}>
-              {d.name}
+          {links.map((l) => (
+            <NavBarLink key={l.path} to={l.path} onClick={close}>
+              {l.name}
             </NavBarLink>
           ))}
         </Links>
@@ -47,7 +47,7 @@ const Nav = styled.nav<{ opened: Boolean }>`
 
   backdrop-filter: blur(5px);
 
-  transition: all 0.4s;
+  transition: all 0.4s ease-in-out;
 
   ${({ opened }) => (opened ? whiteAlphaBackground : nearWhiteAlphaBackground)}
 `;
@@ -64,7 +64,7 @@ const Header = styled.ul`
   list-style: none;
 `;
 
-const Title = styled.text`
+const Title = styled.div`
   ${titleText}
 `;
 
